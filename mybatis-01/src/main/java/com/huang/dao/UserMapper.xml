@@ -3,7 +3,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.huang.dao.UserMapper">
- <select id="getUsers" resultType="com.huang.pojo.User">
-     select * from user
- </select>
+   <select id="getUsers" resultType="com.huang.pojo.User">
+       select * from user
+   </select>
+    <select id="getUserById" parameterType="int" resultType="com.huang.pojo.User">
+        select * from user where id = #{id}
+    </select>
+
+    <insert id="addUser" parameterType="com.huang.pojo.User">
+        insert into user (id, name, pwd) values (#{id},#{name},#{pwd});
+    </insert>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="com.huang.pojo.User">
+        update user set name = #{name}, pwd = #{pwd} where id = #{id} ;
+    </update>
 </mapper>

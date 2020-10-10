@@ -10,4 +10,12 @@ import java.util.List;
 public interface UserMapper {
 
     List<User> getUsers();
+
+    User getUserById(int id);
+
+    int addUser(User user);
+
+    int deleteUserById(int id);
+
+    int updateUser(User user);
 }
