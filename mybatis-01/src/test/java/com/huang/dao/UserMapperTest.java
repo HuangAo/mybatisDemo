@@ -5,7 +5,9 @@ import com.huang.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author :huangao
@@ -71,6 +73,23 @@ public class UserMapperTest {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         User user = new User(1,"huang","123456");
         int result = userMapper.updateUser(user);
+        if(result==1){
+            System.out.println("修改成功");
+            sqlSession.commit();
+        }
+        sqlSession.close();
+
+    }
+
+    //修改User，使用Map传参
+    @Test
+    public void updateUser2(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("id", 2);
+        map.put("pass", "fuckyou");
+        int result = userMapper.updateUser2(map);
         if(result==1){
             System.out.println("修改成功");
             sqlSession.commit();

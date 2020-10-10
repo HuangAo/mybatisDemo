@@ -21,4 +21,8 @@
     <update id="updateUser" parameterType="com.huang.pojo.User">
         update user set name = #{name}, pwd = #{pwd} where id = #{id} ;
     </update>
+
+    <update id="updateUser2" parameterType="map">
+        update user set pwd = #{pass} where id = #{id}
+    </update>
 </mapper>
