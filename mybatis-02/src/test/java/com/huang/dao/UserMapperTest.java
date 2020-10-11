@@ -29,4 +29,19 @@ public class UserMapperTest {
         sqlSession.close();
     }
 
+    //测试分页查询
+    @Test
+    public void getUsersByLimit(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("startIndex",0);
+        map.put("pageSize",2);
+        List<User> userList = userMapper.getUsersByLimit(map);
+        for(User user: userList){
+            System.out.println(user);
+        }
+        sqlSession.close();
+    }
+
 }

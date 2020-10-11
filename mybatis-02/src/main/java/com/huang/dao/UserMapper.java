@@ -11,4 +11,7 @@ import java.util.Map;
 public interface UserMapper {
 
     User getUserById(int id);
+
+    //分页
+    List<User> getUsersByLimit(Map<String,Object> map);
 }
