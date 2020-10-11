@@ -1,0 +1,20 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.huang.dao.UserMapper">
+
+    <!-- 使用resultMap -->
+    <!-- 简单使用resultMap映射，解决数据库表和对象中属性名称不一样 -->
+    <resultMap id="userMap" type="User">
+        <!-- column-数据库表中的字段名 property-类中的属性名 -->
+        <result column="pwd" property="password" />
+    </resultMap>
+
+
+    <select id="getUserById" parameterType="int" resultMap="userMap">
+        select * from user where id = #{id}
+    </select>
+
+
+</mapper>

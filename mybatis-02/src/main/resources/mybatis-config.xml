@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 引入配置文件 -->
+    <properties resource="db.properties" />
+
+    <!-- 类型别名 -->
+    <typeAliases>
+        <!-- 单个指定 -->
+        <!-- <typeAlias type="com.huang.pojo.User" alias="User"/> -->
+        <!-- 指定包 -->
+        <package name="com.huang.pojo"/>
+    </typeAliases>
+
+    <environments default="test">
+        <environment id="test">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/huang/dao/UserMapper.xml"/>
+    </mappers>
+</configuration>
