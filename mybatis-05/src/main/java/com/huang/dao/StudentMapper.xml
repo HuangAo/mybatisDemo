@@ -4,5 +4,14 @@
 
 <mapper namespace="com.huang.dao.StudentMapper">
 
+    <select id="searchStudent" parameterType="student" resultType="Student">
+        select * from student where 1=1
+        <if test="id != null and id != 0">
+          and id = #{id}
+        </if>
+        <if test="name != null">
+          and name = #{name}
+        </if>
+    </select>
 
 </mapper>

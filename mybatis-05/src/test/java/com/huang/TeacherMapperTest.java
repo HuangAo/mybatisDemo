@@ -25,4 +25,18 @@ public class TeacherMapperTest {
         sqlSession.close();
     }
 
+    @Test
+    public void searchStudentTest(){
+
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+        Student studentSearch = new Student();
+        studentSearch.setName("小红");
+        List<Student> students = studentMapper.searchStudent(studentSearch);
+        for(Student student: students){
+            System.out.println(student);
+        }
+        sqlSession.close();
+    }
+
 }
